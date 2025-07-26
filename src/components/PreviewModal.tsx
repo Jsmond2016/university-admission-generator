@@ -1,6 +1,6 @@
 import React from "react";
 import { useAdmissionStore } from "../store/admissionStore";
-import html2canvas from "html2canvas";
+import html2canvas from "html2canvas-pro";
 
 const PreviewModal: React.FC = () => {
   const { isPreviewOpen, setPreviewOpen, setLoading, data } =
@@ -177,12 +177,6 @@ const PreviewModal: React.FC = () => {
         <div className="preview-buttons">
           <button onClick={handleClose} className="preview-btn preview-close">
             <i className="fas fa-times mr-2"></i>关闭预览
-          </button>
-          <button
-            onClick={handleDownload}
-            className="preview-btn preview-download"
-          >
-            <i className="fas fa-download mr-2"></i>下载图片
           </button>
         </div>
       </div>

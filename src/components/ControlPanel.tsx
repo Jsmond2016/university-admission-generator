@@ -1,10 +1,9 @@
 import React from "react";
 import { useAdmissionStore } from "../store/admissionStore";
-import html2canvas from "html2canvas";
+import html2canvas from "html2canvas-pro";
 
 const ControlPanel: React.FC = () => {
-  const { setDrawerOpen, setPreviewOpen, setLoading, data } =
-    useAdmissionStore();
+  const { setPreviewOpen, setLoading, data } = useAdmissionStore();
 
   const handlePreview = () => {
     setPreviewOpen(true);
@@ -13,14 +12,13 @@ const ControlPanel: React.FC = () => {
   const handleDownload = async () => {
     setLoading(true);
 
+    // Error: Attempting to parse an unsupported color function "oklch"
+    // https://github.com/niklasvh/html2canvas/issues/2700
     try {
       const letterElement = document.getElementById("letter-content");
       if (!letterElement) return;
 
-      const canvas = await html2canvas(letterElement, {
-        scale: 2,
-        backgroundColor: null,
-      });
+      const canvas = await html2canvas(letterElement);
 
       const image = canvas.toDataURL("image/png");
       const link = document.createElement("a");
