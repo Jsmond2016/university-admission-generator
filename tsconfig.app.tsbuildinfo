@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/admissionletter.tsx","./src/components/controlpanel.tsx","./src/components/loading.tsx","./src/components/previewmodal.tsx","./src/components/settingsdrawer.tsx","./src/store/admissionstore.ts","./src/utils/dateutils.ts"],"version":"5.8.3"}

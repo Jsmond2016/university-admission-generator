@@ -33,7 +33,7 @@
 ## 项目结构
 
 ```
-university-admission-react/
+university-admission-generator/
 ├── src/
 │   ├── components/          # React组件
 │   │   ├── AdmissionLetter.tsx    # 通知书展示组件
@@ -59,7 +59,7 @@ university-admission-react/
 ### 安装依赖
 
 ```bash
-cd university-admission-react
+cd university-admission-generator
 pnpm install
 ```
 

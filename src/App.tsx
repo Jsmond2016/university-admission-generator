@@ -1,4 +1,3 @@
-import React from "react";
 import { useAdmissionStore } from "./store/admissionStore";
 import AdmissionLetter from "./components/AdmissionLetter";
 import ControlPanel from "./components/ControlPanel";

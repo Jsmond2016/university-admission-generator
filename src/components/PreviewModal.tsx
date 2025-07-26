@@ -1,56 +1,54 @@
 import React from "react";
 import { useAdmissionStore } from "../store/admissionStore";
-import html2canvas from "html2canvas-pro";
 
 const PreviewModal: React.FC = () => {
-  const { isPreviewOpen, setPreviewOpen, setLoading, data } =
-    useAdmissionStore();
+  const { isPreviewOpen, setPreviewOpen, data } = useAdmissionStore();
 
   const handleClose = () => {
     setPreviewOpen(false);
   };
 
-  const handleDownload = async () => {
-    setLoading(true);
+  // const handleDownload = async () => {
+  //   setLoading(true);
 
-    try {
-      const letterElement = document.getElementById("preview-letter");
-      if (!letterElement) {
-        alert("未找到通知书元素，请重试！");
-        return;
-      }
+  //   try {
+  //     const letterElement = document.getElementById("preview-letter");
+  //     if (!letterElement) {
+  //       alert("未找到通知书元素，请重试！");
+  //       return;
+  //     }
 
-      // 确保元素在视口内
-      letterElement.scrollIntoView({ behavior: "smooth" });
+  //     // 确保元素在视口内
+  //     letterElement.scrollIntoView({ behavior: "smooth" });
 
-      // 等待一小段时间确保渲染完成
-      await new Promise((resolve) => setTimeout(resolve, 100));
+  //     // 等待一小段时间确保渲染完成
+  //     await new Promise((resolve) => setTimeout(resolve, 100));
 
-      const canvas = await html2canvas(letterElement, {
-        scale: 2,
-        backgroundColor: "#ffffff",
-        useCORS: true,
-        allowTaint: true,
-        width: letterElement.offsetWidth,
-        height: letterElement.offsetHeight,
-      });
+  //     const canvas = await html2canvas(letterElement, {
+  //       scale: 2,
+  //       backgroundColor: "#ffffff",
+  //       useCORS: true,
+  //       allowTaint: true,
+  //       width: letterElement.offsetWidth,
+  //       height: letterElement.offsetHeight,
+  //     });
 
-      const image = canvas.toDataURL("image/png");
-      const link = document.createElement("a");
-      link.href = image;
-      link.download = `${data.university}-录取通知书.png`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+  //     const image = canvas.toDataURL("image/png");
+  //     const link = document.createElement("a");
+  //     link.href = image;
+  //     link.download = `${data.university}-录取通知书.png`;
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     document.body.removeChild(link);
 
-      setPreviewOpen(false);
-    } catch (error) {
-      console.error("生成图片失败:", error);
-      alert("生成图片失败，请重试！");
-    } finally {
-      setLoading(false);
-    }
-  };
+  //     setPreviewOpen(false);
+  //   } catch (error) {
+  //     console.error("生成图片失败:", error);
+  //     alert("生成图片失败，请重试！");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   if (!isPreviewOpen) return null;
 
