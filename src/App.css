@@ -227,23 +227,6 @@ body {
   display: block;
 }
 
-.drawer-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #e0e7ff;
-}
-
-.drawer-footer {
-  display: flex;
-  gap: 15px;
-  margin-top: 25px;
-  padding-top: 20px;
-  border-top: 2px solid #e0e7ff;
-}
-
 .open-settings-btn {
   position: fixed;
   bottom: 30px;
