@@ -547,6 +547,15 @@ body {
   font-size: 1.2rem;
 }
 
+/* 抽屉底部按钮样式 */
+.drawer-footer {
+  display: flex;
+  gap: 12px;
+  padding: 20px 0;
+  border-top: 1px solid #e0e7ff;
+  margin-top: auto;
+}
+
 @media (max-width: 768px) {
   .settings-drawer {
     width: 100%;
@@ -590,5 +599,10 @@ body {
     height: 65px;
     bottom: 20px;
     right: 20px;
+  }
+
+  .drawer-footer {
+    flex-direction: column;
+    gap: 10px;
   }
 }

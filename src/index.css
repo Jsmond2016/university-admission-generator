@@ -1,4 +1,7 @@
-@import "tailwindcss";
+@import "tailwindcss" layer(tailwind);
+@layer tailwind {
+  /* 保持原有样式，避免被 Tailwind 覆盖 */
+}
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;

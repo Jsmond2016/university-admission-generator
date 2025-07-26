@@ -197,15 +197,15 @@ const SettingsDrawer: React.FC = () => {
         <div className="drawer-footer">
           <button
             onClick={() => setDrawerOpen(false)}
-            className="preview-btn"
-            style={{ flex: 1 }}
+            className="preview-btn preview-close"
+            style={{ flex: 1, padding: "16px", marginRight: "12px" }}
           >
             <i className="fas fa-times mr-2"></i> 取消
           </button>
           <button
             onClick={handleUpdate}
             className="gold-button"
-            style={{ flex: 1, padding: 16 }}
+            style={{ flex: 1, padding: "16px" }}
           >
             <i className="fas fa-sync-alt mr-2"></i> 更新通知书
           </button>

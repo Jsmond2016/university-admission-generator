@@ -15,18 +15,33 @@ const PreviewModal: React.FC = () => {
 
     try {
       const letterElement = document.getElementById("preview-letter");
-      if (!letterElement) return;
+      if (!letterElement) {
+        alert("未找到通知书元素，请重试！");
+        return;
+      }
+
+      // 确保元素在视口内
+      letterElement.scrollIntoView({ behavior: "smooth" });
+
+      // 等待一小段时间确保渲染完成
+      await new Promise((resolve) => setTimeout(resolve, 100));
 
       const canvas = await html2canvas(letterElement, {
         scale: 2,
-        backgroundColor: null,
+        backgroundColor: "#ffffff",
+        useCORS: true,
+        allowTaint: true,
+        width: letterElement.offsetWidth,
+        height: letterElement.offsetHeight,
       });
 
       const image = canvas.toDataURL("image/png");
       const link = document.createElement("a");
       link.href = image;
       link.download = `${data.university}-录取通知书.png`;
+      document.body.appendChild(link);
       link.click();
+      document.body.removeChild(link);
 
       setPreviewOpen(false);
     } catch (error) {
