@@ -6,7 +6,7 @@ const AdmissionLetter: React.FC = () => {
   const { data } = useAdmissionStore();
 
   return (
-    <div className="letter-container">
+    <div className="letter-container" id="letter-container">
       <div className="header-logo">
         <div className="ribbon">录取通知书</div>
         <h1 id="university-name" className="text-3xl font-bold mt-6">

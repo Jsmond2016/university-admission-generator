@@ -15,10 +15,17 @@ const ControlPanel: React.FC = () => {
     // Error: Attempting to parse an unsupported color function "oklch"
     // https://github.com/niklasvh/html2canvas/issues/2700
     try {
-      const letterElement = document.getElementById("letter-content");
+      const letterElement = document.getElementById("letter-container");
       if (!letterElement) return;
 
-      const canvas = await html2canvas(letterElement);
+      const canvas = await html2canvas(letterElement, {
+        scale: 1,
+        backgroundColor: null,
+        useCORS: true,
+        allowTaint: true,
+        scrollX: 0,
+        scrollY: 0,
+      });
 
       const image = canvas.toDataURL("image/png");
       const link = document.createElement("a");
@@ -34,9 +41,7 @@ const ControlPanel: React.FC = () => {
   };
 
   const handleShare = () => {
-    alert(
-      "录取通知书已复制分享链接！\n（在实际应用中，这里会调用社交媒体分享API）"
-    );
+    alert("功能尚未实现，敬请期待！");
   };
 
   return (
