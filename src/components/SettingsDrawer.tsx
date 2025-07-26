@@ -28,17 +28,19 @@ const SettingsDrawer: React.FC = () => {
       />
 
       <div className="settings-drawer open">
-        <div className="drawer-header">
-          <h2 className="text-2xl font-bold text-blue-900">设置通知书信息</h2>
+        <div className="drawer-header flex items-center justify-between">
+          <h2 className="text-2xl font-bold text-blue-900 flex">
+            设置通知书信息
+          </h2>
           <button
             onClick={() => setDrawerOpen(false)}
-            className="text-gray-500 hover:text-gray-700 text-2xl"
+            className="flex text-gray-500 hover:text-gray-700 text-2xl"
           >
             <i className="fas fa-times"></i>
           </button>
         </div>
 
-        <div className="drawer-content">
+        <div className="drawer-content mt-[12px]">
           <div className="form-section">
             <h3>基本信息</h3>
             <div className="input-group">

@@ -36,7 +36,7 @@ const AdmissionLetter: React.FC = () => {
           </div>
         </div>
 
-        <div className="text-center mt-10 mb-16">
+        <div className="text-center mt-[40px] mb-[40px]  ">
           <h2
             id="letter-title"
             className="text-4xl font-bold text-blue-900 mb-6"
@@ -95,10 +95,10 @@ const AdmissionLetter: React.FC = () => {
 
         <div className="flex justify-between items-end">
           <div className="signature">
+            <p className="text-gray-600">签发日期</p>
             <p id="admission-date" className="text-gray-600 mb-1">
               {formatDate(data.admissionDate)}
             </p>
-            <p className="text-gray-600">签发日期</p>
           </div>
 
           <div className="text-right">

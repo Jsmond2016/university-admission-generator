@@ -21,7 +21,7 @@ function App() {
         <AdmissionLetter />
         <ControlPanel />
 
-        <div className="disclaimer">
+        <div className="disclaimer mt-[24px] text-[12px] text-[#718096] text-center p-[20px] bg-[#f8f9fa] rounded-[12px] max-w-[800px] mx-auto my-0 border-[1px] border-solid border-[#e2e8f0] leading-[1.6]">
           <p>
             免责声明：本工具生成的录取通知书仅供娱乐和模拟使用，不具备任何法律效力。实际录取通知书以各大学官方发放的文件为准。
           </p>

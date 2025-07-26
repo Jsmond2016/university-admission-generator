@@ -91,7 +91,7 @@ const PreviewModal: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="text-center mt-10 mb-16">
+                <div className="text-center mt-[40px] mb-[40px]">
                   <h2 className="text-4xl font-bold text-blue-900 mb-6">
                     {data.title}
                   </h2>
@@ -145,6 +145,7 @@ const PreviewModal: React.FC = () => {
 
                 <div className="flex justify-between items-end">
                   <div className="signature">
+                    <p className="text-gray-600">签发日期</p>
                     <p className="text-gray-600 mb-1">
                       {new Date(data.admissionDate).toLocaleDateString(
                         "zh-CN",
@@ -155,7 +156,6 @@ const PreviewModal: React.FC = () => {
                         }
                       )}
                     </p>
-                    <p className="text-gray-600">签发日期</p>
                   </div>
 
                   <div className="text-right">
