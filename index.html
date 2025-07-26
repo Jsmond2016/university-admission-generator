@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>大学录取通知书生成器</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <script src="./assets/js/index.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>大学录取通知书生成器</h1>
+        <p>完全自定义你的录取通知书，生成一份精美的电子版录取通知书</p>
+      </div>
+
+      <div class="letter-container">
+        <div class="header-logo">
+          <div class="ribbon">录取通知书</div>
+          <h1 id="university-name" class="text-3xl font-bold mt-6">某某大学</h1>
+          <p class="text-blue-200 mt-2">OFFICIAL ADMISSION LETTER</p>
+        </div>
+
+        <div class="admission-letter" id="letter-content">
+          <div class="envelope">
+            <i class="fas fa-envelope-open"></i>
+          </div>
+
+          <div class="stamp">
+            <div class="text-center">
+              <div>邮</div>
+              <div>票</div>
+            </div>
+          </div>
+
+          <div class="gold-border"></div>
+
+          <div class="university-seal">
+            <div class="text-center text-blue-700 font-bold">
+              <div>校</div>
+              <div>徽</div>
+            </div>
+          </div>
+
+          <div class="text-center mt-10 mb-16">
+            <h2 id="letter-title" class="text-4xl font-bold text-blue-900 mb-6">
+              录取通知书
+            </h2>
+            <p id="letter-subtitle" class="text-xl text-gray-700">
+              经招生委员会批准，我校决定录取你入读以下专业学习
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div>
+              <p class="text-gray-600 mb-1">考生姓名</p>
+              <p id="student-name" class="text-2xl font-bold text-blue-900">
+                张同学
+              </p>
+            </div>
+            <div>
+              <p class="text-gray-600 mb-1">考生号</p>
+              <p id="student-id" class="text-2xl font-bold text-blue-900">
+                20230615001
+              </p>
+            </div>
+            <div>
+              <p class="text-gray-600 mb-1">录取专业</p>
+              <p id="major-name" class="text-2xl font-bold text-blue-900">
+                计算机科学与技术
+              </p>
+            </div>
+            <div>
+              <p class="text-gray-600 mb-1">学制时间</p>
+              <p id="duration" class="text-2xl font-bold text-blue-900">四年</p>
+            </div>
+          </div>
+
+          <div class="mb-16">
+            <p class="text-gray-600 mb-1">报到时间</p>
+            <p id="register-date" class="text-xl font-bold text-blue-900">
+              2023年9月1日 - 2023年9月2日
+            </p>
+          </div>
+
+          <div
+            id="letter-content-text"
+            class="text-lg text-gray-700 leading-relaxed mb-16"
+          >
+            <p class="mb-4">
+              请你持本通知书于指定日期到我校报到，具体事宜详见《新生入学须知》。
+            </p>
+            <p>我们热烈欢迎你加入某某大学的大家庭，在这里开启人生新的篇章！</p>
+          </div>
+
+          <div class="flex justify-between items-end">
+            <div class="signature">
+              <p id="admission-date" class="text-gray-600 mb-1">
+                2023年7月15日
+              </p>
+              <p class="text-gray-600">签发日期</p>
+            </div>
+
+            <div class="text-right">
+              <div id="issuer-name" class="mb-2 text-gray-600">某某大学</div>
+              <div id="issuer" class="text-lg font-bold text-blue-900">
+                招生办公室
+              </div>
+            </div>
+          </div>
+
+          <!-- 免责声明 -->
+          <div class="letter-disclaimer">
+            本通知书为模拟生成，仅供娱乐，不具有法律效力
+          </div>
+        </div>
+
+        <div class="control-panel">
+          <div class="button-group">
+            <button id="preview-btn" class="action-btn preview-btn">
+              <i class="fas fa-eye mr-2"></i> 预览通知书
+            </button>
+            <button id="download-btn" class="action-btn download-btn">
+              <i class="fas fa-download mr-2"></i> 下载图片
+            </button>
+            <button id="share-btn" class="action-btn share-btn">
+              <i class="fas fa-share-alt mr-2"></i> 分享喜报
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <p>
+          免责声明：本工具生成的录取通知书仅供娱乐和模拟使用，不具备任何法律效力。实际录取通知书以各大学官方发放的文件为准。
+        </p>
+        <p>
+          © 2023 大学录取通知书生成器 - 本工具由前端技术开发，仅用于展示目的
+        </p>
+      </div>
+    </div>
+
+    <!-- 设置抽屉 -->
+    <div class="settings-drawer" id="settings-drawer">
+      <div class="drawer-header">
+        <h2 class="text-2xl font-bold text-blue-900">设置通知书信息</h2>
+        <button
+          id="close-drawer"
+          class="text-gray-500 hover:text-gray-700 text-2xl"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="drawer-content">
+        <div class="form-section">
+          <h3>基本信息</h3>
+          <div class="input-group">
+            <label for="input-university">大学名称</label>
+            <input
+              type="text"
+              id="input-university"
+              placeholder="输入大学名称"
+              value="某某大学"
+            />
+          </div>
+          <div class="input-group">
+            <label for="input-major">录取专业</label>
+            <input
+              type="text"
+              id="input-major"
+              placeholder="输入录取专业"
+              value="计算机科学与技术"
+            />
+          </div>
+          <div class="input-group">
+            <label for="input-duration">学制时间</label>
+            <select id="input-duration">
+              <option value="四年">四年制</option>
+              <option value="五年">五年制</option>
+              <option value="三年">三年制</option>
+              <option value="两年">两年制</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="input-date">录取日期</label>
+            <input type="date" id="input-date" value="2023-07-15" />
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>考生信息</h3>
+          <div class="input-group">
+            <label for="input-student-name">考生姓名</label>
+            <input
+              type="text"
+              id="input-student-name"
+              placeholder="输入考生姓名"
+              value="张同学"
+            />
+          </div>
+          <div class="input-group">
+            <label for="input-student-id">考生号</label>
+            <input
+              type="text"
+              id="input-student-id"
+              placeholder="输入考生号"
+              value="20230615001"
+            />
+          </div>
+          <div class="input-group">
+            <label for="input-register-date">报到时间</label>
+            <input
+              type="text"
+              id="input-register-date"
+              placeholder="输入报到时间"
+              value="2023年9月1日 - 2023年9月2日"
+            />
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>通知内容</h3>
+          <div class="input-group">
+            <label for="input-title">标题</label>
+            <input
+              type="text"
+              id="input-title"
+              placeholder="输入标题"
+              value="录取通知书"
+            />
+          </div>
+          <div class="input-group">
+            <label for="input-subtitle">副标题</label>
+            <input
+              type="text"
+              id="input-subtitle"
+              placeholder="输入副标题"
+              value="经招生委员会批准，我校决定录取你入读以下专业学习"
+            />
+          </div>
+          <div class="input-group">
+            <label for="input-content">通知正文</label>
+            <textarea id="input-content" rows="3" placeholder="输入通知内容">
+请你持本通知书于指定日期到我校报到，具体事宜详见《新生入学须知》。我们热烈欢迎你加入某某大学的大家庭，在这里开启人生新的篇章！</textarea
+            >
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>落款信息</h3>
+          <div class="input-group">
+            <label for="input-issuer">签发单位</label>
+            <input
+              type="text"
+              id="input-issuer"
+              placeholder="输入签发单位"
+              value="招生办公室"
+            />
+          </div>
+          <div class="input-group">
+            <label for="input-issuer-name">单位名称</label>
+            <input
+              type="text"
+              id="input-issuer-name"
+              placeholder="输入单位名称"
+              value="某某大学"
+            />
+          </div>
+        </div>
+
+        <!-- 随机内容按钮放在底部 -->
+        <div class="random-btn-container">
+          <button id="random-btn" class="random-btn">
+            <i class="fas fa-random mr-2"></i> 一键随机内容
+          </button>
+        </div>
+      </div>
+
+      <div class="drawer-footer">
+        <button id="cancel-btn" class="preview-btn" style="flex: 1">
+          <i class="fas fa-times mr-2"></i> 取消
+        </button>
+        <button
+          id="update-btn"
+          class="gold-button"
+          style="flex: 1; padding: 16px"
+        >
+          <i class="fas fa-sync-alt mr-2"></i> 更新通知书
+        </button>
+      </div>
+    </div>
+
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+
+    <!-- 打开设置按钮 -->
+    <div class="open-settings-btn" id="open-settings-btn">
+      <i class="fas fa-cog text-2xl"></i>
+      <div class="notification-badge">!</div>
+    </div>
+
+    <!-- 预览模态框 -->
+    <div class="preview-modal" id="preview-modal">
+      <div class="preview-content">
+        <div class="preview-title">录取通知书预览</div>
+        <div
+          id="preview-container"
+          class="bg-white p-4 rounded-lg w-full max-w-4xl"
+        ></div>
+        <div class="preview-buttons">
+          <button id="close-preview" class="preview-btn preview-close">
+            <i class="fas fa-times mr-2"></i>关闭预览
+          </button>
+          <button
+            id="download-from-preview"
+            class="preview-btn preview-download"
+          >
+            <i class="fas fa-download mr-2"></i>下载图片
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 加载指示器 -->
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <div class="loading-text">正在生成通知书，请稍候...</div>
+    </div>
+  </body>
+</html>
