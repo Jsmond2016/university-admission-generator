@@ -21,22 +21,33 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 22.12.0
           cache: "pnpm"
 
-      # 安装 pnpm
+      # 检查是否存在 pnpm-lock.yaml，如果存在则安装 pnpm 并使用 pnpm，否则使用 npm
       - name: Install pnpm
+        if: steps.check-files.outputs.has-pnpm-lock == 'true'
         uses: pnpm/action-setup@v2
         with:
           version: 8
 
       # 安装项目依赖
       - name: Install dependencies
-        run: pnpm install
+        run: |
+          if [ -f "pnpm-lock.yaml" ]; then
+            pnpm install
+          else
+            npm install
+          fi
 
       # 构建项目
       - name: Build project
-        run: pnpm build
+        run: |
+          if [ -f "pnpm-lock.yaml" ]; then
+            pnpm build
+          else
+            npm run build
+          fi
 
       # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
@@ -44,5 +55,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          # 可选: 强制部署（覆盖之前的部署）
           force_orphan: true
