@@ -2,7 +2,7 @@
 
 这是一个使用 React、TypeScript 和 Zustand 构建的大学录取通知书生成器。
 
-![](./public/cover.png)
+![](./docs/imgs/cover.png)
 
 
 ## 🎯 项目亮点
