@@ -96,26 +96,26 @@ const PreviewModal: React.FC = () => {
                   <p className="text-xl text-gray-700">{data.subtitle}</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-                  <div>
+                <div className="flex flex-wrap mb-16" style={{ gap: "2rem" }}>
+                  <div style={{ width: "calc(50% - 1rem)", minHeight: "80px" }}>
                     <p className="text-gray-600 mb-1">考生姓名</p>
                     <p className="text-2xl font-bold text-blue-900">
                       {data.studentName}
                     </p>
                   </div>
-                  <div>
+                  <div style={{ width: "calc(50% - 1rem)", minHeight: "80px" }}>
                     <p className="text-gray-600 mb-1">考生号</p>
                     <p className="text-2xl font-bold text-blue-900">
                       {data.studentId}
                     </p>
                   </div>
-                  <div>
+                  <div style={{ width: "calc(50% - 1rem)", minHeight: "80px" }}>
                     <p className="text-gray-600 mb-1">录取专业</p>
                     <p className="text-2xl font-bold text-blue-900">
                       {data.major}
                     </p>
                   </div>
-                  <div>
+                  <div style={{ width: "calc(50% - 1rem)", minHeight: "80px" }}>
                     <p className="text-gray-600 mb-1">学制时间</p>
                     <p className="text-2xl font-bold text-blue-900">
                       {data.duration}
@@ -123,7 +123,9 @@ const PreviewModal: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="mb-16">
+                <div></div>
+
+                <div className="mb-[64px]">
                   <p className="text-gray-600 mb-1">报到时间</p>
                   <p className="text-xl font-bold text-blue-900">
                     {data.registerDate}

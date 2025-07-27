@@ -19,18 +19,22 @@ const ControlPanel: React.FC = () => {
       if (!letterElement) return;
 
       const canvas = await html2canvas(letterElement, {
-        scale: 1,
+        scale: 2,
         backgroundColor: null,
+
+        windowWidth: 900,
+        windowHeight: 1020,
         useCORS: true,
         allowTaint: true,
         scrollX: 0,
         scrollY: 0,
+        foreignObjectRendering: false,
       });
 
       const image = canvas.toDataURL("image/png");
       const link = document.createElement("a");
       link.href = image;
-      link.download = `${data.university}-录取通知书.png`;
+      link.download = `${data.university}-${data.studentName}-录取通知书.png`;
       link.click();
     } catch (error) {
       console.error("生成图片失败:", error);

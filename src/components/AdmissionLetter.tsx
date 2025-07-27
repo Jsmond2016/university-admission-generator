@@ -48,26 +48,26 @@ const AdmissionLetter: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          <div>
+        <div className="flex flex-wrap mb-16" style={{ gap: "2rem" }}>
+          <div style={{ width: "calc(50% - 1rem)", minHeight: "80px" }}>
             <p className="text-gray-600 mb-1">考生姓名</p>
             <p id="student-name" className="text-2xl font-bold text-blue-900">
               {data.studentName}
             </p>
           </div>
-          <div>
+          <div style={{ width: "calc(50% - 1rem)", minHeight: "80px" }}>
             <p className="text-gray-600 mb-1">考生号</p>
             <p id="student-id" className="text-2xl font-bold text-blue-900">
               {data.studentId}
             </p>
           </div>
-          <div>
+          <div style={{ width: "calc(50% - 1rem)", minHeight: "80px" }}>
             <p className="text-gray-600 mb-1">录取专业</p>
             <p id="major-name" className="text-2xl font-bold text-blue-900">
               {data.major}
             </p>
           </div>
-          <div>
+          <div style={{ width: "calc(50% - 1rem)", minHeight: "80px" }}>
             <p className="text-gray-600 mb-1">学制时间</p>
             <p id="duration" className="text-2xl font-bold text-blue-900">
               {data.duration}
@@ -75,7 +75,9 @@ const AdmissionLetter: React.FC = () => {
           </div>
         </div>
 
-        <div className="mb-16">
+        <div></div>
+
+        <div className="mb-[64px]">
           <p className="text-gray-600 mb-1">报到时间</p>
           <p id="register-date" className="text-xl font-bold text-blue-900">
             {data.registerDate}
